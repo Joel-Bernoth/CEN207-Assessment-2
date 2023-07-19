@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using System.Windows;
+using CEN207_Assessment_2.Structures;
 using RabbitMQ.Client;
 
 namespace CEN207_Assessment_2
@@ -39,19 +40,6 @@ namespace CEN207_Assessment_2
             {
                 {"x-queue-type", "stream" }
             };
-
-            channel.QueueDeclare(
-                queue: "Feed-Stream",
-                durable: true,
-                autoDelete: false,
-                exclusive: false,
-                arguments: args
-            );
-            channel.BasicPublish(
-                exchange: string.Empty,
-                routingKey: "Feed-Stream",
-                basicProperties: null,
-                body: Encoding.UTF8.GetBytes("Hello Welcome"));
 
         }
 

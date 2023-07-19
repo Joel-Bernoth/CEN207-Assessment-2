@@ -25,20 +25,21 @@
             </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding Name}" FontSize="15px" FontFamily="Georgia" FontWeight="ExtraBold"/>
-                        <TextBlock Text="{Binding UserName}" FontSize="10px" Foreground="LightGray" FontWeight="ExtraLight"/>
-                        <TextBlock Text="{Binding Title}" FontSize="20px" FontFamily="Mrs Eaves OT"/>
-                        <TextBlock Text="{Binding Body}" FontSize="12px" FontFamily="Mrs Eaves OT" />
-                    </StackPanel>
-
+                    <Border Margin="10,0,10,10" BorderBrush="Red" BorderThickness="1,1,1,1">
+                        <StackPanel>
+                            <TextBlock Text="{Binding Name}" FontSize="15px" FontFamily="Georgia" FontWeight="ExtraBold"/>
+                            <TextBlock Text="{Binding UserName}" FontSize="10px" Foreground="LightGray" FontWeight="ExtraLight"/>
+                            <TextBlock Text="{Binding Title}" FontSize="20px" FontFamily="Mrs Eaves OT"/>
+                            <TextBlock Text="{Binding Body}" FontSize="12px" FontFamily="Mrs Eaves OT" />
+                        </StackPanel>
+                    </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
         <DockPanel VerticalAlignment="Bottom" Height="50">
-            <TextBox TextWrapping="Wrap" Text="Title" DockPanel.Dock="Left" Height="35" Width="100"/>
-            <TextBox TextWrapping="Wrap" Text="Body" DockPanel.Dock="Left" FontSize="14" Margin="10,0,0,0" Height="50" Width="633"/>
-            <Button Content="Post" Margin="10,0,0,0" Width="35" DockPanel.Dock="Left" Height="35" HorizontalAlignment="Left"/>
+            <TextBox x:Name="TitleTB" TextWrapping="Wrap" Text="Title" DockPanel.Dock="Left" Height="35" Width="100" TextChanged="TitleTB_TextChanged"/>
+            <TextBox x:Name="BodyTB" TextWrapping="Wrap" Text="Body" DockPanel.Dock="Left" FontSize="14" Margin="10,0,0,0" Height="50" Width="633" TextChanged="BodyTB_TextChanged"/>
+            <Button x:Name="PostBtn" Content="Post" Margin="10,0,0,0" Width="35" DockPanel.Dock="Left" Height="35" HorizontalAlignment="Left" Click="PostBtn_Click"/>
         </DockPanel>
 
     </Grid>
