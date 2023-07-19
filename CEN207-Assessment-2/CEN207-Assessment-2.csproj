@@ -8,4 +8,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="-account-circle_89831.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="-account-circle_89831.png" />
+  </ItemGroup>
+
 </Project>

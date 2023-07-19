@@ -5,8 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CEN207_Assessment_2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Office Communication" Height="650" Width="1000">
     <Grid>
+        <Frame x:Name="MainFrame" Content="Frame" Margin="0,49,0,0"/>
+        <Button Content="Feed" HorizontalAlignment="Left" Margin="30,5,0,0" VerticalAlignment="Top" Height="34" Width="112"/>
+        <Button Content="Chat" HorizontalAlignment="Left" Margin="170,5,0,0" VerticalAlignment="Top" Height="34" Width="112"/>
+        <Button Content="Admin" HorizontalAlignment="Left" Margin="310,5,0,0" VerticalAlignment="Top" Height="34" Width="112"/>
+        <Button x:Name="Login" HorizontalAlignment="Left" Margin="915,4,0,0" VerticalAlignment="Top" Height="36" Width="35">
+            <Button.Foreground>
+                <ImageBrush/>
+            </Button.Foreground>
+            <Button.BorderBrush>
+                <ImageBrush/>
+            </Button.BorderBrush>
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+            <Image Height="35" Width="35" Source="/-account-circle_89831.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Button>
 
     </Grid>
 </Window>
