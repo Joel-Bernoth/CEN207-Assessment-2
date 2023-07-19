@@ -1,17 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Diagnostics;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using RabbitMQ.Client;
 
 namespace CEN207_Assessment_2
 {
@@ -20,11 +12,69 @@ namespace CEN207_Assessment_2
     /// </summary>
     public partial class MainWindow : Window
     {
+        private bool isLoggedIn = false;
+
+        public bool IsLoggedIn
+        {
+            get { return isLoggedIn; }
+            set { isLoggedIn = value; }
+        }
+
         public MainWindow()
         {
-            InitializeComponent();
 
+            InitializeComponent(); // Starts the Main Window
+
+            CheckRabbitMQStatus();
+            // Checks the
             this.MainFrame.Content = new Pages.Feed();
+            
+
+            ConnectionFactory factory = new ConnectionFactory { HostName = "localhost", Port = 5672 };
+            IConnection conn = factory.CreateConnection();
+            IModel channel = conn.CreateModel();
+
+
+            Dictionary<string, object> args = new Dictionary<string, object>()
+            {
+                {"x-queue-type", "stream" }
+            };
+
+            channel.QueueDeclare(
+                queue: "Feed-Stream",
+                durable: true,
+                autoDelete: false,
+                exclusive: false,
+                arguments: args
+            );
+            channel.BasicPublish(
+                exchange: string.Empty,
+                routingKey: "Feed-Stream",
+                basicProperties: null,
+                body: Encoding.UTF8.GetBytes("Hello Welcome"));
+
+        }
+
+        private void CheckRabbitMQStatus()
+        {
+            ConnectionFactory factory = new ConnectionFactory { HostName = "localhost", Port = 5672 };
+            IConnection conn = null;
+
+            try
+            {
+                conn = factory.CreateConnection();
+                conn.Close();
+                conn.Dispose();
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message == "None of the specified endpoints were reachable")
+                {
+                    Console.WriteLine("RabbitMQ Down");
+                    Debug.WriteLine("RabbitMQ is Down");
+                    this.MainFrame.Content = new Pages.Error("RabbitMQ Is Down");
+                }
+            }
         }
     }
 }
