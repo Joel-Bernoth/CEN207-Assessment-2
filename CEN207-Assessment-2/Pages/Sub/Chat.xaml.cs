@@ -13,22 +13,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CEN207_Assessment_2.Pages
+namespace CEN207_Assessment_2.Pages.Sub
 {
     /// <summary>
-    /// Interaction logic for Error.xaml
+    /// Interaction logic for Chat.xaml
     /// </summary>
-    public partial class Error : Page
+    public partial class Chat : Page
     {
-        public Error(String Error)
+        public Chat(string Reciever)
         {
             InitializeComponent();
-            this.ErrorMsg.Content = Error;
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            App.Current.Shutdown();
+            username_txt.Content = Reciever;
         }
     }
 }

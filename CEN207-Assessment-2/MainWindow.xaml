@@ -31,15 +31,15 @@
     <Grid>
         <DockPanel Height="50" VerticalAlignment="Top">
             
-            <Button Content="Feed" HorizontalAlignment="Left" VerticalAlignment="Center" Height="34" Width="112"/>
-            <Button Content="Chat" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="34" Width="112" Margin="10,0,0,0"/>
-            <Button Content="Admin" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="34" Width="112" Margin="10,0,0,0"/>
-            <Button x:Name="Login" HorizontalAlignment="Right" VerticalAlignment="Center" Height="36" Width="35" BorderThickness="1,1,1,1" BorderBrush="{x:Null}" Foreground="{x:Null}" DockPanel.Dock="Right" Template="{StaticResource NoMouseOverButtonTemplate}">
+            <Button x:Name="feed_btn" Content="Feed" HorizontalAlignment="Left" VerticalAlignment="Center" Height="34" Width="112"/>
+            <Button x:Name="chat_btn" Content="Chat" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="34" Width="112" Margin="10,0,0,0"/>
+            <Button x:Name="admin_btn" Content="Admin" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="34" Width="112" Margin="10,0,0,0"/>
+            <Button x:Name="login_btn" HorizontalAlignment="Right" VerticalAlignment="Center" Height="36" Width="35" BorderThickness="1,1,1,1" BorderBrush="{x:Null}" Foreground="{x:Null}" DockPanel.Dock="Right" Template="{StaticResource NoMouseOverButtonTemplate}">
                 <Button.Background>
                     <ImageBrush ImageSource="/Images/-account-circle_89831.png"/>
                 </Button.Background>
             </Button>
         </DockPanel>
-        <Frame x:Name="MainFrame" Content="Frame" Margin="0,49,0,0"/>
+        <Frame x:Name="MainFrame" Content="Frame" Margin="0,49,0,0" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

@@ -13,7 +13,7 @@
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Height="159">
                 <Label x:Name="ErrorTitle" HorizontalContentAlignment="Center" Content="Error" Foreground="Red" FontSize="22" FontWeight="Bold" Width="360"/>
                 <Label x:Name="ErrorMsg" Content="Error" Foreground="White" FontSize="14" FontWeight="Bold" Height="87"/>
-                <Button Content="Close" HorizontalAlignment="Right" Height="32" Width="52"/>
+                <Button Content="Close" HorizontalAlignment="Right" Height="32" Width="52" Click="Button_Click"/>
             </StackPanel>
         </Border>
 

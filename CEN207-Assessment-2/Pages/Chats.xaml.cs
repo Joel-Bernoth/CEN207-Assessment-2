@@ -16,19 +16,13 @@ using System.Windows.Shapes;
 namespace CEN207_Assessment_2.Pages
 {
     /// <summary>
-    /// Interaction logic for Error.xaml
+    /// Interaction logic for Chats.xaml
     /// </summary>
-    public partial class Error : Page
+    public partial class Chats : Page
     {
-        public Error(String Error)
+        public Chats()
         {
             InitializeComponent();
-            this.ErrorMsg.Content = Error;
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            App.Current.Shutdown();
         }
     }
 }

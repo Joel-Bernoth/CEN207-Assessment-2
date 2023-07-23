@@ -26,24 +26,52 @@ namespace CEN207_Assessment_2
 
             InitializeComponent(); // Starts the Main Window
 
-            CheckRabbitMQStatus();
-            // Checks the
-            this.MainFrame.Content = new Pages.Feed();
-            
-
-            ConnectionFactory factory = new ConnectionFactory { HostName = "localhost", Port = 5672 };
-            IConnection conn = factory.CreateConnection();
-            IModel channel = conn.CreateModel();
-
-
-            Dictionary<string, object> args = new Dictionary<string, object>()
+            if (CheckRabbitMQStatus())
             {
-                {"x-queue-type", "stream" }
-            };
+                // Checks the
+                this.MainFrame.Content = new Pages.Feed();
+
+
+                ConnectionFactory factory = new ConnectionFactory { HostName = "localhost", Port = 5672 };
+                IConnection conn = factory.CreateConnection();
+                IModel channel = conn.CreateModel();
+
+                Dictionary<string, object> args = new Dictionary<string, object>()
+                {
+                    {"x-queue-type", "stream" }
+                };
+
+                this.feed_btn.Click += new RoutedEventHandler(feedbtn_Click);
+                this.login_btn.Click += new RoutedEventHandler(loginbtn_Click);
+                this.chat_btn.Click += new RoutedEventHandler(chatbtn_Click);
+                this.admin_btn.Click += new RoutedEventHandler(adminbtn_Click);
+            }
 
         }
 
-        private void CheckRabbitMQStatus()
+
+        private void feedbtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.MainFrame.Content = new Pages.Feed();
+        }
+
+        private void loginbtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.MainFrame.Content = new Pages.LoginPage();
+        }
+
+        private void chatbtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.MainFrame.Content = new Pages.Chats();
+        }
+
+        private void adminbtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.MainFrame.Content = new Pages.Admin();
+        }
+
+        // Check To see if the Server is up, If it is return 
+        private bool CheckRabbitMQStatus()
         {
             ConnectionFactory factory = new ConnectionFactory { HostName = "localhost", Port = 5672 };
             IConnection conn = null;
@@ -58,11 +86,11 @@ namespace CEN207_Assessment_2
             {
                 if (ex.Message == "None of the specified endpoints were reachable")
                 {
-                    Console.WriteLine("RabbitMQ Down");
-                    Debug.WriteLine("RabbitMQ is Down");
                     this.MainFrame.Content = new Pages.Error("RabbitMQ Is Down");
+                    return false;
                 }
             }
+            return true;
         }
     }
 }
