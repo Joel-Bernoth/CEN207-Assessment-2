@@ -20,9 +20,22 @@ namespace CEN207_Assessment_2.Pages
     /// </summary>
     public partial class LoginPage : Page
     {
+        private string displayName = "";
+
         public LoginPage()
         {
             InitializeComponent();
+           displayName_TXT.Text = App.getDisplayName();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            displayName = displayName_TXT.Text;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            App.setDisplayName(displayName);
         }
     }
 }

@@ -9,21 +9,22 @@
       Title="Chats">
 
     <Grid>
-        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,669,0" Width="131" HorizontalAlignment="Left" BorderBrush="#FF7C8088">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Frame Content="Frame" Margin="131,0,0,50"/>
-        <Border BorderThickness="1" Margin="131,400,0,0" Background="#FFC17777" BorderBrush="White" Height="50" VerticalAlignment="Bottom">
-            <DockPanel VerticalAlignment="Bottom" >
-                <TextBox TextWrapping="Wrap" Text="TextBox" Width="536" Height="46"/>
-                <Button Content="Send" Height="34" Width="85"/>
+        <ListBox x:Name="ChatList" Width="145" HorizontalAlignment="Left" BorderBrush="#FF7C8088" SelectionChanged="ListBox_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding Name}" Height="25" Margin="10"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBoxItem Content="Global Chat"/>
+        </ListBox>
+        <Frame x:Name="chatFrame" Content="Frame" Margin="145,0,0,50"/>
+        <Border BorderThickness="1" Margin="145,0,0,0" Background="#FFC17777" BorderBrush="White" Height="50" VerticalAlignment="Bottom">
+            <DockPanel VerticalAlignment="Center" >
+                <TextBox x:Name="messageTXT" TextWrapping="Wrap" Text="TextBox" Width="536" Height="43" TextChanged="TextBox_TextChanged"/>
+                <Button Content="Send" Height="34" Width="85" Click="Button_Click"/>
             </DockPanel>
         </Border>
-        
+
 
     </Grid>
 </Page>

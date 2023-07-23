@@ -12,9 +12,9 @@ using System.Threading.Tasks;
 namespace CEN207_Assessment_2.Structures
 {
 
-    public class FeedPost
+    public class ChatPost
     {
-        public static byte[] Serialize(FeedPost_Struct post)
+        public static byte[] Serialize(ChatPost_Struct post)
         {
             int size = Marshal.SizeOf(post);
             byte[] arr = new byte[size];
@@ -33,9 +33,9 @@ namespace CEN207_Assessment_2.Structures
             return arr;
         }
 
-        public static FeedPost_Struct DeSerialize(byte[] arr)
+        public static ChatPost_Struct DeSerialize(byte[] arr)
         {
-            FeedPost_Struct post = new FeedPost_Struct();
+            ChatPost_Struct post = new ChatPost_Struct();
 
             int size = Marshal.SizeOf(post);
             IntPtr ptr = IntPtr.Zero;
@@ -44,7 +44,7 @@ namespace CEN207_Assessment_2.Structures
             {
                 ptr = Marshal.AllocHGlobal(size);
                 Marshal.Copy(arr, 0, ptr, size);
-                post = (FeedPost_Struct)Marshal.PtrToStructure(ptr, post.GetType());
+                post = (ChatPost_Struct)Marshal.PtrToStructure(ptr, post.GetType());
             }
             finally
             {
@@ -54,30 +54,15 @@ namespace CEN207_Assessment_2.Structures
         }
     }
 
-    public struct FeedPost_Struct
+    public struct ChatPost_Struct
     {
 
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 100)]
-        private string userName;
-        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 100)]
         private string name;
-        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 100)]
-        private string title;
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1000)]
         private string body;
 
 
-        public string UserName
-        {
-            get { return this.userName; }
-            set
-            {
-                if (value.Any(c => c == ' '))
-                    throw new Exception("Invalid name. (It cannot contain spaces)");
-
-                this.userName = value;
-            }
-        }
 
         public string Name
         {
@@ -85,14 +70,6 @@ namespace CEN207_Assessment_2.Structures
             set => this.name = value;
         }
 
-        public string Title
-        {
-            get { return this.title; }
-            set
-            {
-                this.title = value;
-            }
-        }
         public string Body
         {
             get { return this.body; }

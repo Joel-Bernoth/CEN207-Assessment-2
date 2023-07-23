@@ -13,5 +13,17 @@ namespace CEN207_Assessment_2
     /// </summary>
     public partial class App : Application
     {
+        private static string localDisplayName = "";
+
+        public static string getDisplayName()
+        {
+            return localDisplayName;
+        }
+
+        public static void setDisplayName(string value)
+        {
+            localDisplayName = value;
+        }
+
     }
 }

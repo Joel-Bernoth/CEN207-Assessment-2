@@ -9,6 +9,9 @@
       Title="LoginPage">
 
     <Grid>
-        
+        <TextBox x:Name="displayName_TXT" HorizontalAlignment="Left" Margin="104,42,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
+        <Label Content="Display Name : " HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Width="94"/>
+        <Button Content="Save" HorizontalAlignment="Left" Margin="712,419,0,0" VerticalAlignment="Top" Height="21" Width="78" Click="Button_Click"/>
+
     </Grid>
 </Page>

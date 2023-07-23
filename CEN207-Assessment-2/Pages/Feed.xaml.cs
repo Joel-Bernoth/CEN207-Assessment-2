@@ -97,7 +97,7 @@ namespace CEN207_Assessment_2.Pages
             };
 
             FeedPost_Struct post = new FeedPost_Struct();
-            post.Name = "Joel Bernoth";
+            post.Name = App.getDisplayName();
             post.UserName = "JBernoth";
             post.Title = this.title;
             post.Body = this.body;
